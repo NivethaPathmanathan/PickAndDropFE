@@ -5,13 +5,12 @@ import { Observable } from "rxjs";
 import { CustomerService } from '../Services/customer.service';
 
 @Component({
-  selector: 'app-complaint',
-  templateUrl: './complaint.component.html',
+  selector: 'app-employee',
+  templateUrl: './employee.component.html',
 })
-export class ComplaintComponent implements OnInit {
-  addForm: FormGroup;
-  submitted :boolean;
+export class EmployeeComponent implements OnInit {
   p: any;
+  public searchText : string;
   private _allCus: Observable<Customer[]>;
   public get allCus(): Observable<Customer[]> {
     return this._allCus;
@@ -21,6 +20,7 @@ export class ComplaintComponent implements OnInit {
     this._allCus = value;
   }
   customer: Customer[] = [];
+  Status;
   constructor(
     private fb: FormBuilder,
     private customerservice : CustomerService) { }
@@ -30,43 +30,16 @@ export class ComplaintComponent implements OnInit {
     //   this.allCus = this.customerservice.getcustomer();
     // }
 
-  ngOnInit():void {
-    this.addForm = this.fb.group({
-      name: ['', Validators.required],
-      email:['', Validators.required],
-      complaint:''
-    })
-
+  ngOnInit() {
     this.customerservice.getcustomer().subscribe(data => {
       this.customer = data;
       // this.loadDisplay();
     })
   }
 
+
 getcustomer(){
 }
-
-  get f(){
-    return this.addForm.controls
-  }
-
-  onSubmit(){
-    this.submitted = true;
-
-    if(this.addForm.invalid){
-    return;
-  }
-
-  this.customerservice.createcustomer(this.addForm.value)
-  .subscribe(data => {
-    if(this.addForm.status){
-      this.addForm.reset();
-    }
-  },
-    error => {
-      alert(error);
-    });
-  }
 
   deletecustomer(customer: Customer): void {
     this.customerservice.deletecustomer(customer.id)
@@ -75,4 +48,13 @@ getcustomer(){
       })
   };
 
+  onChangeStatus(StatusId: number){
+    if(StatusId){
+      this.customerservice.getstatus(StatusId).subscribe(
+        data => this.Status = data
+      );
+    }else{
+      this.Status = null;
+    }
+  }
 }

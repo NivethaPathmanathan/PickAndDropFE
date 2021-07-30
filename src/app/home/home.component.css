@@ -1,0 +1,9 @@
+.nav-item{
+  padding:2px;
+  margin-left: 7px;
+}
+
+.bg{
+  background: rgb(0,54,56);
+  background: linear-gradient(90deg, rgba(0,54,56,1) 3%, rgba(3,73,76,1) 20%, rgba(8,106,109,1) 36%, rgba(20,118,121,1) 54%, rgba(31,129,132,1) 72%, rgba(56,154,157,1) 100%);
+}

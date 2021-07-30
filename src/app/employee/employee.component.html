@@ -1,0 +1,35 @@
+<div class="col-md-11, container" style="margin-top: 90px; background-color:#E8F0F2; padding-top:20px; color: #2a0240; width: 1000px; height: 500px;">
+  <h2 class="text-center" style="margin-bottom: 20px; color:#03494c; font-family:Helvetica, sans-serif"><b>Complaint list </b></h2>
+  <input class="form-control" type="text" placeholder="Search Here.." [(ngModel)]="searchText"> <br />
+  {{this.Status | json}}
+  <table class="table table-striped container" style="width: 900px;">
+  <thead style="color: #E8F0F2; background: #055052;">
+    <tr>
+      <th>Customer Id</th>
+      <th>Customer Name</th>
+      <th>Email</th>
+      <th>Complaint</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cust of customer | filter: searchText | paginate: { itemsPerPage: 5, currentPage: p }">
+      <td>{{cust.id}}</td>
+      <td>{{cust.name}}</td>
+      <td>{{cust.email}}</td>
+      <td>{{cust.complaint}}</td>
+      <td>
+        <select (change)="onChangeStatus()">
+          <option value="">Select state...</option>
+          <option *ngFor="let status of Status" [value]="status.statusId">{{status.StatusName}}</option>
+        </select>
+           <!-- <button class="btn btn-danger" style="color: #e0d7e6;" (click)="deletecustomer(customer)"> <i class="fa fa-trash" aria-hidden="true"></i>
+      </button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ul class="pagination">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</ul>
+</div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { Customer } from 'src/app/model/customer.model';
+import { Status } from '../Model/status.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Customer } from 'src/app/model/customer.model';
 export class CustomerService {
 
   baseurl: string = "http://localhost:3000/customer";
+  apibaseurl: string = "http://localhost:3000/status";
 
   constructor(private http: HttpClient) { }
   getcustomer():Observable<Customer[]>{
@@ -19,12 +21,12 @@ export class CustomerService {
     return this.http.get<Customer[]>(this.baseurl + '/' + id);
   }
 
-  createcustomer(customer: Customer) {
-    return this.http.post(this.baseurl, customer);
+  getstatus(StatusId: number):Observable<Status[]>{
+    return this.http.get<Status[]>(this.apibaseurl + '/' + StatusId)
   }
 
-  updatecustomer(customer: Customer) {
-    return this.http.put(this.baseurl + '/' + customer.id, customer);
+  createcustomer(customer: Customer) {
+    return this.http.post(this.baseurl, customer);
   }
 
   deletecustomer(id: number) {

@@ -1,5 +1,6 @@
-
- <form [formGroup]="addForm" class="container" (ngSubmit)="onSubmit()" style="width:600px">
+ <div class="col-md-11, container" style="margin-top: 90px; background-color:#E8F0F2; color: #2a0240;  padding-top:20px; width: 700px; height: 400px;">
+  <h2 class="text-center" style="margin-bottom: 20px; color:#03494c; font-family:Helvetica, sans-serif"><b>Complaint Box </b></h2>
+  <form [formGroup]="addForm" class="container" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name"><b>Name:</b></label>
     <input class="form-control form-control-sm-2" type="text" id="name" formControlName="name" placeholder="Enter your name">
@@ -23,11 +24,12 @@
     <label for="complaint"><b>Complaint:</b></label>
     <input class="form-control form-control-sm-2" rows="5" id="complaint" formControlName="complaint" type="text" placeholder="Type your complaint here..">
   </div>
-  <button type="submit" class="btn btn-primary mb-2" data-toggle="tooltip" title="Add">
+  <button type="submit" class="btn" style="background-color: #03494c; color:#E8F0F2;" data-toggle="tooltip" title="Add">
     Add
   </button>
 </form>
-<table class="table table-striped container" style="width: 600px;">
+</div>
+<!-- <table class="table table-striped container" style="width: 900px;">
   <thead style="color: #ffffff; background: #000000;">
     <tr>
       <th>Customer Id</th>
@@ -39,21 +41,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cust of customer">
+    <tr *ngFor="let cust of customer"> -->
     <!-- | paginate: { itemsPerPage: 6, currentPage: p }"> -->
-      <td>{{cust.id}}</td>
+      <!-- <td>{{cust.id}}</td>
       <td>{{cust.name}}</td>
       <td>{{cust.email}}</td>
       <td>{{cust.complaint}}</td>
       <td>{{cust.time}}</td>
-      <td><button class="btn btn-danger" style="color: #e0d7e6;" (click)="deletecustomer(customer)"> <i class="fa fa-trash" aria-hidden="true"></i>
+      <td>
+        <button class="btn btn-danger" style="color: #e0d7e6;" (click)="deletecustomer(customer)"> <i class="fa fa-trash" aria-hidden="true"></i>
       </button>
-        <button class="btn btn-primary" style="color: #e0d7e6; margin-left: 20px;" (click)="editcustomer(customer)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </button>
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 <!-- <ul class="pagination">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </ul> -->

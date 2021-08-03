@@ -1,8 +1,8 @@
- <div class="col-md-11, container" style="margin-top: 90px; background-color:#E8F0F2; color: #2a0240;  padding-top:20px; width: 700px; height: 400px;">
+ <div class="col-md-11, container" style="margin-top: 90px; background-color:#E8F0F2; color: #2a0240;  padding-top:20px; width: 700px; height: 530px;">
   <h2 class="text-center" style="margin-bottom: 20px; color:#03494c; font-family:Helvetica, sans-serif"><b>Complaint Box </b></h2>
   <form [formGroup]="addForm" class="container" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="name"><b>Name:</b></label>
+    <label for="name"><b>Name:</b><span class="error">*</span></label>
     <input class="form-control form-control-sm-2" type="text" id="name" formControlName="name" placeholder="Enter your name">
     <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched || submitted)">
       <div *ngIf="f.name.errors.required" style="color:red;">
@@ -12,49 +12,22 @@
    </div>
 
   <div class="form-group">
-    <label for="email"><b>Email:</b></label>
+    <label for="email"><b>Email:</b><span class="error">*</span></label>
     <input class="form-control form-control-sm-2" type="text" id="email" formControlName="email" placeholder="Enter your email address">
-    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched || submitted)">
-      <div *ngIf="f.email.errors.required" style="color:red;">
-      Please enter your email
-    </div>
-   </div>
+      <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched || submitted)">
+      <div *ngIf="f.email.errors.required" style="color:red;">Please enter your email</div>
+      <div *ngIf="f.email.hasError('email')" style="color:red;">Enter valid email address.</div>
+     </div>
   </div>
   <div class="form-group">
     <label for="complaint"><b>Complaint:</b></label>
-    <input class="form-control form-control-sm-2" rows="5" id="complaint" formControlName="complaint" type="text" placeholder="Type your complaint here..">
+    <textarea class="form-control form-control-sm-2" id="complaint" name="complaint" rows="4" formControlName="complaint" type="textarea" placeholder="Type your complaint here.."></textarea>
+    <div *ngIf="f.complaint.invalid && (f.complaint.dirty || f.complaint.touched || submitted)">
+      <div *ngIf="f.complaint.errors.required" style="color:red;">Please enter your complaint here..</div>
+  </div>
   </div>
   <button type="submit" class="btn" style="background-color: #03494c; color:#E8F0F2;" data-toggle="tooltip" title="Add">
     Add
   </button>
 </form>
 </div>
-<!-- <table class="table table-striped container" style="width: 900px;">
-  <thead style="color: #ffffff; background: #000000;">
-    <tr>
-      <th>Customer Id</th>
-      <th>Customer Name</th>
-      <th>Email</th>
-      <th>Complaint</th>
-      <th>Time</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cust of customer"> -->
-    <!-- | paginate: { itemsPerPage: 6, currentPage: p }"> -->
-      <!-- <td>{{cust.id}}</td>
-      <td>{{cust.name}}</td>
-      <td>{{cust.email}}</td>
-      <td>{{cust.complaint}}</td>
-      <td>{{cust.time}}</td>
-      <td>
-        <button class="btn btn-danger" style="color: #e0d7e6;" (click)="deletecustomer(customer)"> <i class="fa fa-trash" aria-hidden="true"></i>
-      </button>
-      </td>
-    </tr>
-  </tbody>
-</table> -->
-<!-- <ul class="pagination">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</ul> -->

@@ -4,20 +4,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ComplaintComponent } from './complaint/complaint.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EmployeeComponent } from './employee/employee.component';
+import { viewComplaintComponent } from './viewComplaint/viewComplaint.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { headerComponent } from './header/header.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchPipe } from './Pipe/search.pipe';
+import { SearchPipe } from './pipe/search.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+import { ToastrModule } from 'ngx-toastr';
+// import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 @NgModule({
   declarations: [
     AppComponent,
     ComplaintComponent,
-    EmployeeComponent,
-    HomeComponent,
+    viewComplaintComponent,
+    headerComponent,
     SearchPipe
   ],
   imports: [
@@ -26,10 +28,14 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
     ReactiveFormsModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    NgOptionHighlightModule,
+    BrowserAnimationsModule,
+    // NgOptionHighlightModule,
     HttpClientModule,
     RouterModule.forRoot([]),
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot({
+      positionClass : 'toast-bottom-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

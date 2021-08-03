@@ -4,4 +4,5 @@ export class Customer {
   email: string;
   complaint: string;
   time: Date;
+  statusId:number;
 }

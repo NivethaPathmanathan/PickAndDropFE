@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Customer } from '../Model/customer.model';
+import { Customer } from '../model/customer.model';
 import { Observable } from "rxjs";
-import { CustomerService } from '../Services/customer.service';
+import { CustomerService } from '../services/customer.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-complaint',
@@ -23,28 +24,22 @@ export class ComplaintComponent implements OnInit {
   customer: Customer[] = [];
   constructor(
     private fb: FormBuilder,
+    private toastr :ToastrService,
     private customerservice : CustomerService) { }
-
-    // loadDisplay(){
-    //   //debugger;
-    //   this.allCus = this.customerservice.getcustomer();
-    // }
 
   ngOnInit():void {
     this.addForm = this.fb.group({
       name: ['', Validators.required],
-      email:['', Validators.required],
-      complaint:''
+      email: ['', [Validators.required, Validators.email]],
+      complaint:['', Validators.required]
     })
 
-    this.customerservice.getcustomer().subscribe(data => {
+    this.customerservice.getcomplaint().subscribe(data => {
       this.customer = data;
       // this.loadDisplay();
     })
   }
 
-getcustomer(){
-}
 
   get f(){
     return this.addForm.controls
@@ -61,6 +56,10 @@ getcustomer(){
   .subscribe(data => {
     if(this.addForm.status){
       this.addForm.reset();
+      this.submitted = false;
+      this.toastr.success('Successfully Added!!');
+    }else{
+      this.toastr.error('Failed to add!!');
     }
   },
     error => {

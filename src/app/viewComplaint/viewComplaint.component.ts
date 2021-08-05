@@ -37,10 +37,14 @@ export class viewComplaintComponent implements OnInit {
 }
 
   deletecustomer(customer: Customer): void {
-    this.customerservice.deletecustomer(customer.id)
+    if(confirm("Are you sure to delete customer with id: "+customer)) {
+    this.customerservice.deletecustomer(+customer)
       .subscribe(data => {
         this.complaints = this.complaints.filter(u => u !== customer);
       })
+      this.toastr.success('Successfully deleted!!');
+      location.reload();
+    }
   };
 
   onChangeStatus(event){
@@ -49,9 +53,10 @@ export class viewComplaintComponent implements OnInit {
 
   updateStatus(CustomerId){
  //   let obj = {statusID: this.StatusId, Id : CustomerId}
-    this.customerservice.updatestatus(this.statusId).subscribe(
+    this.customerservice.updatestatus(CustomerId).subscribe(
       data => {
         this.toastr.success('Successfully updated!!');
       });
   }
+
 }

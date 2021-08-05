@@ -34,7 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule.forRoot([]),
     AppRoutingModule,
     ToastrModule.forRoot({
-      positionClass : 'toast-bottom-right'
+      positionClass : 'toast-top-right',
+      timeOut: 3000
     })
   ],
   providers: [],

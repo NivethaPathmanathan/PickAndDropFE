@@ -12,15 +12,15 @@ import { ToastrService } from 'ngx-toastr';
 export class ComplaintComponent implements OnInit {
   addForm: FormGroup;
   submitted :boolean;
-  p: any;
-  private _allCus: Observable<Customer[]>;
-  public get allCus(): Observable<Customer[]> {
-    return this._allCus;
-  }
+  // p: any;
+  // private _allCus: Observable<Customer[]>;
+  // public get allCus(): Observable<Customer[]> {
+  //   return this._allCus;
+  // }
 
-  public set allCus(value: Observable<Customer[]>) {
-    this._allCus = value;
-  }
+  // public set allCus(value: Observable<Customer[]>) {
+  //   this._allCus = value;
+  // }
   customer: Customer[] = [];
   constructor(
     private fb: FormBuilder,
@@ -34,10 +34,10 @@ export class ComplaintComponent implements OnInit {
       complaint:['', Validators.required]
     })
 
-    this.customerservice.getcomplaint().subscribe(data => {
-      this.customer = data;
-      // this.loadDisplay();
-    })
+    // this.customerservice.getcomplaint().subscribe(data => {
+    //   this.customer = data;
+    //   // this.loadDisplay();
+    // })
   }
 
 

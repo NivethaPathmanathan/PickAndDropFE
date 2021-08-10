@@ -52,8 +52,12 @@ export class viewComplaintComponent implements OnInit {
     }
 
   updateStatus(CustomerId){
- //   let obj = {statusID: this.StatusId, Id : CustomerId}
-    this.customerservice.updatestatus(CustomerId).subscribe(
+  //  let obj = {statusID: this.statusId, id : CustomerId}
+  let obj =new Customer();
+  obj.statusId = +this.statusId;
+  obj.id = CustomerId;
+  parseInt(this.statusId);
+    this.customerservice.updatestatus(obj).subscribe(
       data => {
         this.toastr.success('Successfully updated!!');
       });

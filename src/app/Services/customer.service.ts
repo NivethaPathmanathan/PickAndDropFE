@@ -30,7 +30,7 @@ export class CustomerService {
   }
 
   updatestatus(customer:Customer) {
-    return this.http.put(environment.baseurl + '/' + customer.id, customer);
+    return this.http.put(environment.baseurl + '/' + customer.Id, customer);
   }
 
   findByTitle(title){

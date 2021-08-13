@@ -15,10 +15,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let cust of complaints | filter: searchText | paginate: { itemsPerPage: 5, currentPage: p }">
-      <td>{{cust.id}}</td>
-      <td>{{cust.name}}</td>
-      <td>{{cust.email}}</td>
-      <td>{{cust.complaint}}</td>
+      <td>{{cust.Id}}</td>
+      <td>{{cust.Name}}</td>
+      <td>{{cust.Email}}</td>
+      <td>{{cust.Complaint}}</td>
       <td>
         <select (change)="onChangeStatus($event)">
           <option value="">Select state...</option>

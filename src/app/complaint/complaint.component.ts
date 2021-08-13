@@ -68,7 +68,7 @@ export class ComplaintComponent implements OnInit {
   }
 
   deletecustomer(customer: Customer): void {
-    this.customerservice.deletecustomer(customer.id)
+    this.customerservice.deletecustomer(customer.Id)
       .subscribe(data => {
         this.customer = this.customer.filter(u => u !== customer);
       })

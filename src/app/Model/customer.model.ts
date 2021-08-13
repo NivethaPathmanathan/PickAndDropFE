@@ -1,8 +1,7 @@
 export class Customer {
-  id: number;
-  name: string;
-  email: string;
-  complaint: string;
-  time: Date;
-  statusId:number;
+  Id: number;
+  Name: string;
+  Email: string;
+  Complaint: string;
+  StatusId:number;
 }
